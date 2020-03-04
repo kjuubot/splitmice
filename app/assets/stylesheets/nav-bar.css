@@ -60,5 +60,6 @@
 
 #navbar-signup:hover {
     box-shadow: none;
-    margin-top: 2px;
+    position: relative;
+    top: 2px;
 }
