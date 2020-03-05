@@ -6,6 +6,7 @@ class SessionForm extends React.Component {
         super(props);
         this.state = {
             username: '',
+            email: '',
             password: ''
         };
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -26,7 +27,6 @@ class SessionForm extends React.Component {
     render() {
 
         let content;
-        let formHeader;
 
         const loginErrors = this.props.errors.map((el, idx) => {
             return (
@@ -35,7 +35,6 @@ class SessionForm extends React.Component {
         });
 
         if (this.props.formType === 'login') {
-            formHeader = 'log in';
             content = (
                 <div className="login-form-background">
                     <fieldset className="login-form-page">
@@ -45,13 +44,11 @@ class SessionForm extends React.Component {
                                 <input type="text" value={this.state.username} placeholder="Username" onChange={this.update('username')}/>
                             </label>
                             <br />
-
                             <label>
                                 <input type="password" placeholder="Password" value={this.state.password} onChange={this.update('password')}/>
                             </label>
-
                             <br />
-                            <input type="submit" className="login-page-button" value={formHeader}></input>
+                            <input type="submit" className="login-page-button" value='log in'></input>
 
                             <div className="signup-prompt">New to Splitmice? <Link className="signup-link" to="/signup">Sign up now!</Link></div>
 
@@ -59,53 +56,30 @@ class SessionForm extends React.Component {
                         </form>
                     </fieldset>
                 </div>
-
             );
-
         } else {
-            formHeader = 'sign me up';
             content = (
                 <div className="login-form-background">
                     <fieldset className="login-form-page">
                         <div className="login-welcome">welcome to splitmice</div>
                         <form onSubmit={this.handleSubmit} className="login-form">
                             <label>
-                                <input
-                                    type="text"
-                                    value={this.state.username}
-                                    placeholder="Pick a username"
-                                    onChange={this.update('username')}
-                                />
+                                <input type="text" value={this.state.username} placeholder="Pick a username" onChange={this.update('username')} />
                             </label>
                             <br />
-
                             <label>
-                                <input
-                                    type="text"
-                                    value={this.state.email}
-                                    placeholder="Enter your email address"
-                                    onChange={this.update('email')}
-                                />
+                                <input type="text" value={this.state.email} placeholder="Enter your email address" onChange={this.update('email')} />
                             </label>
-
                             <br />
-
                             <label>
-                                <input
-                                    type="password"
-                                    placeholder="Create a password"
-                                    value={this.state.password}
-                                    onChange={this.update('password')}
-                                />
+                                <input type="password" placeholder="Create a password" value={this.state.password} onChange={this.update('password')} />
                             </label>
-
                             <br />
-                            <input type="submit" className="login-page-button" value={formHeader}></input>
+                            <input type="submit" className="login-page-button" value='sign me up'></input>
 
                             <div className="signup-prompt">Already have an account? <Link className="signup-link" to="/login">Log in.</Link></div>
 
                             <ul className="login-errors">{loginErrors}</ul>
-
                         </form>
                     </fieldset>
                 </div>
