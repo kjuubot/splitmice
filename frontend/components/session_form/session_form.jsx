@@ -36,8 +36,8 @@ class SessionForm extends React.Component {
 
         if (this.props.formType === 'login') {
             content = (
-                <div className="login-form-background">
-                    <fieldset className="login-form-page">
+                <div className="login-container">
+                    <fieldset className="login-form-box">
                         <div className="login-welcome">welcome back!</div>
                         <form onSubmit={this.handleSubmit}>
                             <label>
@@ -55,12 +55,13 @@ class SessionForm extends React.Component {
                             <ul className="login-errors">{loginErrors} </ul>
                         </form>
                     </fieldset>
+                    <img src={window.images.login} id="login-mouse"></img>
                 </div>
             );
         } else {
             content = (
-                <div className="login-form-background">
-                    <fieldset className="login-form-page">
+                <div className="login-container">
+                    <fieldset className="login-form-box">
                         <div className="login-welcome">welcome to splitmice</div>
                         <form onSubmit={this.handleSubmit} className="login-form">
                             <label>
@@ -76,21 +77,16 @@ class SessionForm extends React.Component {
                             </label>
                             <br />
                             <input type="submit" className="login-page-button" value='sign me up'></input>
-
                             <div className="signup-prompt">Already have an account? <Link className="signup-link" to="/login">Log in.</Link></div>
-
                             <ul className="login-errors">{loginErrors}</ul>
                         </form>
                     </fieldset>
+                    <img src={window.images.signup} id="signup-mouse"></img>
                 </div>
             );
         }
 
-        return (
-            <div>
-                {content}
-            </div>
-        );
+        return(content);
     }
 }
 

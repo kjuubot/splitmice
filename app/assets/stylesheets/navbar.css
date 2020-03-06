@@ -1,4 +1,4 @@
-.nav-bar {
+.navbar {
     /* border: 1px solid red; */
     position: fixed;
     top: 0;
@@ -10,33 +10,46 @@
     color: #ffffff;
     box-shadow: 0 0 3px rgba(0,0,0,0.5);
     font-family: 'Montserrat', sans-serif;
-    height: 48px;
+    height: 60px;
 }
 
-#navbar-logo {
+.navbar-logo {
     /* border: 1px solid red; */
+    width: 153px;
+    height: 100%;
     position: absolute;
-    font-weight: bold;
-    letter-spacing: 1px;
-    margin-top: 15px;
+    font-weight: 600;
     margin-left: 10%;
     color: white;
-    font-size: 18px;
+    font-size: 20px;
     text-decoration: none;
+}
+
+.navbar-logo img {
+    position: absolute;
+    margin-right: 5px;
+    margin-top: 5px;
+    height: 80%;
+}
+
+#app-name {
+    position: absolute;
+    right: 0px;
+    top: 36%;
 }
 
 .navbar-loggedin, .navbar-loggedout {
     /* border: 1px solid red; */
     position: absolute;
     right: 10%;
-    margin-top: 18px;
-    font-size: 13px;
+    margin-top: 23px;
+    font-size: 14px;
 }
 
 #navbar-login {
     /* border: 1px solid red; */
     border-radius: 5px;
-    font-weight: bold;
+    font-weight: 600;
     text-decoration: none;
     color: white;
     padding-top: 8px;
@@ -52,13 +65,13 @@
     border-radius: 5px;
     background-color: #FD5215;
     box-shadow: 0 2px 0 0 rgba(55,59,63,0.5);
-    font-weight: bold;
+    font-weight: 600;
     text-decoration: none;
     color: white;
-    padding-top: 8px;
-    padding-bottom: 8px;
-    padding-left: 12px;
-    padding-right: 12px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
     margin-left: 5px;
 }
 

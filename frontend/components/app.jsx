@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link, Route, Switch } from 'react-router-dom';
+import HomepageContainer from './homepage/homepage_container'
 import NavbarContainer from "./navbar/navbar_container";
 import SignupFormContainer from './session_form/signup_form_container';
 import LoginFormContainer from './session_form/login_form_container';
@@ -21,18 +22,17 @@ const _redirectIfLoggedOut = (nextState, replace) => {
 
 const App = () => (
     <div>
-        <header className="nav-bar">
-            <Link id="navbar-logo" to="/">
-                {/* <img src="../../app/assets/images/logo.png" /> Splitmice */}
-                {/* <img src={logo} /> Splitmice */}
+        <header className="navbar">
+            <Link className="navbar-logo" to="/">
+                <img src={window.images.logo} className="logo" />
+                <span id="app-name">Splitmice</span>
             </Link>
             <NavbarContainer />
         </header>
         <Switch>
-            <Route exact path="/" component={Homepage} />
+            <Route exact path="/" component={HomepageContainer} />
             <AuthRoute exact path="/login" component={LoginFormContainer} onEnter={_redirectIfLoggedIn} />
             <AuthRoute exact path="/signup" component={SignupFormContainer} onEnter={_redirectIfLoggedIn} />
-            {/* <Route path="/login" component={LoginFormContainer} onEnter={_redirectIfLoggedIn} /> */}
             {/* <Route path="/dashboard" component={DashboardContainer} onEnter={_redirectIfLoggedOut} /> */}
         </Switch>
     </div>
