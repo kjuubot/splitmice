@@ -6,6 +6,29 @@ class User < ApplicationRecord
 
     attr_reader :password
 
+    has_many :friendships,
+        primary_key: :id,
+        foreign_key: :user_id,
+        class_name: 'Friendship'
+
+    has_many :friends,
+        through: :friendships,
+        source: :friend
+
+    has_many :expenses,
+        primary_key: :id,
+        foreign_key: :creator_id,
+        class_name: 'Expense'
+
+    has_many :splits_received,
+        class_name: 'Split',
+        foreign_key: :recipient_id,
+        primary_key: :id
+
+    has_many :expenses_received,
+        through: :received_splits,
+        source: :expense
+
     def self.find_by_credentials(username, password)
         user = User.find_by(username: username)
         return nil if user.nil?
@@ -30,4 +53,5 @@ class User < ApplicationRecord
     def ensure_session_token
         self.session_token ||= SecureRandom.urlsafe_base64(64)
     end
+    
 end

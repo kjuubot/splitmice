@@ -1,6 +1,6 @@
 .navbar {
     /* border: 1px solid red; */
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
@@ -15,7 +15,7 @@
 
 .navbar-logo {
     /* border: 1px solid red; */
-    width: 153px;
+    width: 150px;
     height: 100%;
     position: absolute;
     font-weight: 600;
@@ -26,13 +26,13 @@
 }
 
 .navbar-logo img {
-    position: absolute;
-    margin-right: 5px;
-    margin-top: 5px;
-    height: 80%;
+    /* border: 1px solid red; */
+    margin-top: 6px;
+    height: 75%;
 }
 
 #app-name {
+    /* border: 1px solid red; */
     position: absolute;
     right: 0px;
     top: 36%;

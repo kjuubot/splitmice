@@ -1,6 +1,9 @@
 .homepage-container {
-    /* border: 1px solid red; */
-    margin-top: 48px;
+    margin-top: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     font-family: 'Lato', sans-serif;
     color: #373b3f;
 }
@@ -17,39 +20,35 @@
     z-index: -1;
 }
 
-.splash-logo {
+.splash-image {
     /* border: 1px solid red; */
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    padding-top: 8%;
-    width: 55vw;
-    min-width: 350px;
+    height: 5vw;
+    min-height: 400px;
 }
 
 .homepage-tagline {
     /* border: 1px solid red; */
-    display: block;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 2vh;
+    margin-top: 2em;
+    margin-bottom: 1.25em;
     font-family: 'Montserrat', sans-serif;
-    font-size: calc(9px + 1.5vw);
+    font-size: calc(12px + 1vw);
     font-weight: 700;
     text-align: center;
 }
 
 .homepage-value {
-    margin-top: 2em;
+    margin-top: 1em;
     text-align: center;
     padding-left: 10%;
     padding-right: 10%;
-    font-size: calc(10px + 0.5vw);
+    font-size: calc(12px + 0.5vw);
     line-height: 1.5em;
 }
 
 .guest-demo {
-    border: 1px solid red;
+    /* border: 1px solid red; */
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -62,7 +61,7 @@
     font-weight: 600;
     text-decoration: none;
     color: white;
-    margin-top: 50px;
+    margin-top: 2em;
     padding-top: 10px;
     padding-bottom: 10px;
     padding-left: 15px;
@@ -82,7 +81,7 @@
     /* border: 1px solid red; */
     background-color: white;
     text-align: center;
-    width: 100%;
+    width: 100vw;
     position: fixed;
     padding-top: 12px;
     bottom: 0px;

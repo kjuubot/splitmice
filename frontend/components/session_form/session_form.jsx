@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-class SessionForm extends React.Component {
+export default class SessionForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -21,11 +21,10 @@ class SessionForm extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
         const user = Object.assign({}, this.state);
-        this.props.processForm(user);
+        this.props.processForm(user).then(() => this.props.history.push('/dashboard'));
     }
 
     render() {
-
         let content;
 
         const loginErrors = this.props.errors.map((el, idx) => {
@@ -89,5 +88,3 @@ class SessionForm extends React.Component {
         return(content);
     }
 }
-
-export default SessionForm;

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_04_225358) do
+ActiveRecord::Schema.define(version: 2020_03_06_232230) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,39 @@ ActiveRecord::Schema.define(version: 2020_03_04_225358) do
     t.string "checksum", null: false
     t.datetime "created_at", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
+
+  create_table "expenses", force: :cascade do |t|
+    t.string "title", null: false
+    t.float "amount", null: false
+    t.date "date", null: false
+    t.integer "num_people", null: false
+    t.boolean "paid_status", null: false
+    t.integer "creator_id", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["creator_id"], name: "index_expenses_on_creator_id"
+  end
+
+  create_table "friendships", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "friend_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["friend_id"], name: "index_friendships_on_friend_id"
+    t.index ["user_id", "friend_id"], name: "index_friendships_on_user_id_and_friend_id", unique: true
+    t.index ["user_id"], name: "index_friendships_on_user_id"
+  end
+
+  create_table "splits", force: :cascade do |t|
+    t.float "amount", null: false
+    t.integer "expense_id", null: false
+    t.integer "recipient_id", null: false
+    t.boolean "paid_status", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["expense_id"], name: "index_splits_on_expense_id"
+    t.index ["recipient_id"], name: "index_splits_on_recipient_id"
   end
 
   create_table "users", force: :cascade do |t|

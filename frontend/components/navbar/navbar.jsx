@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const Navbar = ({ currentUser, logout }) => {
+const Navbar = ( { currentUser, logout }) => {
     const loggedOutNav = () => (
         <nav className="navbar-loggedout">
             <Link id="navbar-login" to="/login">Log in</Link>

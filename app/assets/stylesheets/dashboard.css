@@ -1,0 +1,121 @@
+.dashboard {
+    /* border: 1px solid red; */
+    display: flex;
+    margin-top: 60px;
+    height: 100vh;
+    font-family: 'Lato', sans-serif;
+    color: #373b3f;
+    outline: none;
+}
+
+.dashboard-sidebar {
+    /* border: 1px solid red; */
+    padding-left: 10%;
+    padding-right: 50px;
+    box-shadow: 0 0 3px rgba(0,0,0,0.5);
+    z-index: 1;
+}
+
+.dashboard-main {
+    /* border: 1px solid red; */
+    width: 100%;
+}
+
+.dashboard-header {
+    /* border: 1px solid red; */
+    background-color: #eeeeee;
+    box-shadow: 0 2px 3px -3px rgba(0,0,0,0.5);
+    display: flex;
+    min-height: 50px;
+    padding-left: 50px;
+    padding-right: 11%;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.dashboard-actions {
+    /* border: 1px solid red; */
+    display: flex;
+}
+
+.dashboard-actions button {
+    border-radius: 5px;
+    box-shadow: 0 1px 0 0 rgba(55, 59, 63, 0.25);
+    font-size: 12px;
+    font-weight: 500;
+    text-decoration: none;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    padding-left: 12px;
+    padding-right: 12px;
+    margin-left: 5px;
+}
+
+.dashboard-actions button:hover {
+    box-shadow: none;
+    position: relative;
+    top: 1px;
+}
+
+.add-expense-button {
+    color: #FD5215;
+}
+
+.settle-up-button {
+    color: #48be9d;
+}
+
+.dashboard-summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 50px;
+    padding-right: 10%;
+}
+
+.dashboard-balance, .dashboard-owe, .dashboard-owed {
+    /* border: 1px solid red; */
+    min-height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 33%;
+}
+
+.balance-title {
+    /* border: 1px solid red; */
+    min-width: 104px;
+}
+
+.owe-title {
+    /* border: 1px solid red; */
+    min-width: 75px;
+}
+
+.owed-title {
+    /* border: 1px solid red; */
+    min-width: 112px;
+}
+
+.amount.positive, .amount-you-are-owed {
+    color: #008900;
+}
+
+.amount.negative, .amount-you-owe {
+    color: #CC0000;
+}
+
+.dashboard-payments {
+    display: flex;
+    justify-content: space-between;
+    padding-left: 50px;
+    padding-right: 10%;
+}
+
+.settled-up-status, .you-owe, .you-are-owed {
+    /* border: 1px solid red; */
+    width: 33%;
+    text-align: center;
+}
