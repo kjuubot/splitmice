@@ -3,15 +3,14 @@ import merge from 'lodash/merge';
 
 const initialState = {
     users: {},
-    errors: {}
 };
 
 const friendshipsReducer = (state = initialState, action) => {
+    Object.freeze(state);
     let nextState = Object.assign({}, state);
     let keys;
     let tempState;
     let finalState;
-    Object.freeze(state);
 
     switch(action.type) {
         case RECEIVE_FRIEND:
@@ -64,12 +63,8 @@ const friendshipsReducer = (state = initialState, action) => {
         case CLEAR_SEARCH:
             nextState.userResult = [];
             return nextState;
-        case RECEIVE_ERRORS:
-            tempState = merge({}, {users:nextState}, {errors:action.errors});
-            return tempState;
         default:
             return nextState;
-        
     }
 };
 

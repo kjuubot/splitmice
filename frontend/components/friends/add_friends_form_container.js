@@ -1,4 +1,4 @@
-import Friends from './friends';
+import AddFriendsForm from './add_friends_form';
 import { getFriends, addFriend, searchFriends, searchUsers, clearSearch } from '../../actions/friendship_actions';
 import { selectAllFriends } from '../../reducers/selectors';
 import { openModal, closeModal } from '../../actions/modal_actions';
@@ -24,4 +24,4 @@ const mapDispatchToProps = dispatch => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Friends);
+export default connect(mapStateToProps, mapDispatchToProps)(AddFriendsForm);

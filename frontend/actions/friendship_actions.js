@@ -6,7 +6,7 @@ export const REMOVE_FRIEND = 'REMOVE_FRIEND';
 export const RECEIVE_SEARCHED_FRIENDS = 'RECEIVE_SEARCHED_FRIENDS';
 export const RECEIVE_SEARCHED_USERS = 'RECEIVE_SEARCHED_USERS';
 export const CLEAR_SEARCH = 'CLEAR_SEARCH';
-export const RECEIVE_ERRORS = 'RECEIVE_ERRORS';
+export const RECEIVE_FRIENDSHIP_ERRORS = 'RECEIVE_FRIENDSHIP_ERRORS';
 
 export const receiveFriend = friend => ({
     type: RECEIVE_FRIEND,
@@ -32,8 +32,8 @@ export const clearSearch = () => ({
     type: CLEAR_SEARCH
 });
 
-export const receiveErrors = errors => ({
-    type: RECEIVE_ERRORS,
+export const receiveFriendshipErrors = errors => ({
+    type: RECEIVE_FRIENDSHIP_ERRORS,
     errors
 });
 
@@ -47,7 +47,7 @@ export const addFriend = user => dispatch => (
     APIUtil.addFriend(user).then(friend => (
         dispatch(receiveFriend(friend))
     ), err => (
-        dispatch(receiveErrors(err.responseJSON))
+        dispatch(receiveFriendshipErrors(err.responseJSON))
     ))
 );
 

@@ -61,10 +61,8 @@ export default class ExpenseForm extends React.Component {
             }, err => {
                 this.props.clearSearch();
                 this.clearState();
-
             }
         );
-
     }
 
     findRecipientIds(recipients) {
@@ -116,54 +114,57 @@ export default class ExpenseForm extends React.Component {
             return <li key={idx} className="selected" onClick={this.removeRecipient}>{el}<div id="close">x</div></li>;
         });
 
+        const expenseErrors = this.props.errors.map((el, idx) => {
+            return (
+                <li key={`${idx}`}>{el}</li>
+            );
+        });
+
         let formContent;
         formContent = (
             <div className="add-expense-modal">
-                    <h1>Create an expense</h1>
-                    <fieldset className="add-friend-form">
-                        <form onSubmit={this.handleSubmit}>
-                            <div className="expense-input">
+                <h1>Create an expense</h1>
+                <fieldset className="add-friend-form">
+                    <form onSubmit={this.handleSubmit}>
+                        <div className="expense-input">
 
-                                <ul className="expense-user-input">
-                                    <div className="expense-search-results">
-                                        <div>With you and:</div>
-                                        {selectedUsers}
-                                        <li>
-                                            <input
-                                                type="text"
-                                                value={this.state.username}
-                                                placeholder="Enter People Here"
-                                                onChange={this.userQuery('username')}
-                                            />
-                                        </li>
-                                    </div>
-                                </ul>
-                            </div>
-
-                            <div className="expense-friend-search">
-                                <ul>
-                                    {searchList}
-                                </ul>
-                            </div>
-
-                            <div className="expense-info">
-                                <input type="text" value={this.state.title} placeholder="Enter Title" onChange={this.update('title')} />
-
-                                <input type="number" value={this.state.amount} placeholder="Enter Amount" onChange={this.update('amount')} />
-
-                                <input type="date" value={this.state.date} onChange={this.update('date')} />
-                            </div>
-
-                            <br />
-
-                            <div className="expense-button-group">
-                                <div className="add-friend-button">
-                                    <input type="submit" value="Save"></input>
+                            <ul className="expense-user-input">
+                                <div className="expense-search-results">
+                                    <div>With you and:</div>
+                                    {selectedUsers}
+                                    <li>
+                                        <input type="text" value={this.state.username} placeholder="Enter People Here" onChange={this.userQuery('username')} />
+                                    </li>
                                 </div>
+                            </ul>
+                        </div>
+
+                        <div className="expense-friend-search">
+                            <ul>
+                                {searchList}
+                            </ul>
+                        </div>
+
+                        <div className="expense-info">
+                            <input type="text" value={this.state.title} placeholder="Enter Title" onChange={this.update('title')} />
+
+                            <input type="number" value={this.state.amount} placeholder="Enter Amount" onChange={this.update('amount')} />
+
+                            <input type="date" value={this.state.date} onChange={this.update('date')} />
+                        </div>
+
+                        <br />
+
+                        <div className="expense-button-group">
+                            <div className="add-friend-button">
+                                <input type="submit" value="Save"></input>
                             </div>
-                        </form>
-                    </fieldset>
-                    <br />
+                        </div>
+
+                        <ul className="expense-errors">{expenseErrors}</ul>
+                    </form>
+                </fieldset>
+                <br />
             </div>
         );
 

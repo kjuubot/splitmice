@@ -9,7 +9,7 @@ const mapStateToProps = state => {
     return {
         search: selectAllFriends(state.friends.userResult),
         friends: state.friends.users,
-        errors: state.friends.errors
+        errors: state.errors.expense
     };
 };
 

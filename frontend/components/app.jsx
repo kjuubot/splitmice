@@ -20,11 +20,12 @@ const _redirectIfLoggedOut = (nextState, replace) => {
     }
 }
 
+// let navRoute = store.getState().session.currentUser ? "/" : "/dashboard";
 const App = () => (
     <div>
         <Modal />
         <header className="navbar">
-            <Link className="navbar-logo" to="/">
+            <Link className="navbar-logo" to="/dashboard">
                 <img src={window.images.logo} className="logo" />
                 <span id="app-name">Splitmice</span>
             </Link>

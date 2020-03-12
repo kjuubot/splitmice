@@ -90,31 +90,31 @@
 /*!*********************************************!*\
   !*** ./frontend/actions/expense_actions.js ***!
   \*********************************************/
-/*! exports provided: RECEIVE_EXPENSES, RECEIVE_ERRORS, receiveExpenses, receiveErrors, createExpense, getExpenses, settleUpExpense */
+/*! exports provided: RECEIVE_EXPENSES, RECEIVE_EXPENSE_ERRORS, receiveExpenses, receiveExpenseErrors, createExpense, getExpenses, settleUpExpense */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_EXPENSES", function() { return RECEIVE_EXPENSES; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_ERRORS", function() { return RECEIVE_ERRORS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_EXPENSE_ERRORS", function() { return RECEIVE_EXPENSE_ERRORS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "receiveExpenses", function() { return receiveExpenses; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "receiveErrors", function() { return receiveErrors; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "receiveExpenseErrors", function() { return receiveExpenseErrors; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createExpense", function() { return createExpense; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getExpenses", function() { return getExpenses; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "settleUpExpense", function() { return settleUpExpense; });
 /* harmony import */ var _util_expense_api_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/expense_api_util */ "./frontend/util/expense_api_util.js");
 
 var RECEIVE_EXPENSES = "RECEIVE_EXPENSES";
-var RECEIVE_ERRORS = "RECEIVE_ERRORS";
+var RECEIVE_EXPENSE_ERRORS = "RECEIVE_EXPENSE_ERRORS";
 var receiveExpenses = function receiveExpenses(expenses) {
   return {
     type: RECEIVE_EXPENSES,
     expenses: expenses
   };
 };
-var receiveErrors = function receiveErrors(errors) {
+var receiveExpenseErrors = function receiveExpenseErrors(errors) {
   return {
-    type: RECEIVE_ERRORS,
+    type: RECEIVE_EXPENSE_ERRORS,
     errors: errors
   };
 };
@@ -123,7 +123,7 @@ var createExpense = function createExpense(expense) {
     return _util_expense_api_util__WEBPACK_IMPORTED_MODULE_0__["createExpense"](expense).then(function (expenses) {
       return dispatch(receiveExpenses(expenses));
     }, function (err) {
-      return dispatch(receiveErrors(err.responseJSON));
+      return dispatch(receiveExpenseErrors(err.responseJSON));
     });
   };
 };
@@ -132,7 +132,7 @@ var getExpenses = function getExpenses() {
     return _util_expense_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchExpenses"]().then(function (expenses) {
       return dispatch(receiveExpenses(expenses));
     }, function (err) {
-      return dispatch(receiveErrors(err.responseJSON));
+      return dispatch(receiveExpenseErrors(err.responseJSON));
     });
   };
 };
@@ -141,7 +141,7 @@ var settleUpExpense = function settleUpExpense(expense) {
     return _util_expense_api_util__WEBPACK_IMPORTED_MODULE_0__["settleUpExpense"](expense).then(function (expenses) {
       return dispatch(receiveExpenses(expenses));
     }, function (err) {
-      return dispatch(receiveErrors(err.responseJSON));
+      return dispatch(receiveExpenseErrors(err.responseJSON));
     });
   };
 };
@@ -152,7 +152,7 @@ var settleUpExpense = function settleUpExpense(expense) {
 /*!************************************************!*\
   !*** ./frontend/actions/friendship_actions.js ***!
   \************************************************/
-/*! exports provided: RECEIVE_FRIEND, RECEIVE_ALL_FRIENDS, REMOVE_FRIEND, RECEIVE_SEARCHED_FRIENDS, RECEIVE_SEARCHED_USERS, CLEAR_SEARCH, RECEIVE_ERRORS, receiveFriend, receiveAllFriends, receiveSearchedFriends, receiveSearchedUsers, clearSearch, receiveErrors, getFriends, addFriend, searchFriends, searchUsers */
+/*! exports provided: RECEIVE_FRIEND, RECEIVE_ALL_FRIENDS, REMOVE_FRIEND, RECEIVE_SEARCHED_FRIENDS, RECEIVE_SEARCHED_USERS, CLEAR_SEARCH, RECEIVE_FRIENDSHIP_ERRORS, receiveFriend, receiveAllFriends, receiveSearchedFriends, receiveSearchedUsers, clearSearch, receiveFriendshipErrors, getFriends, addFriend, searchFriends, searchUsers */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -163,13 +163,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_SEARCHED_FRIENDS", function() { return RECEIVE_SEARCHED_FRIENDS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_SEARCHED_USERS", function() { return RECEIVE_SEARCHED_USERS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CLEAR_SEARCH", function() { return CLEAR_SEARCH; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_ERRORS", function() { return RECEIVE_ERRORS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_FRIENDSHIP_ERRORS", function() { return RECEIVE_FRIENDSHIP_ERRORS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "receiveFriend", function() { return receiveFriend; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "receiveAllFriends", function() { return receiveAllFriends; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "receiveSearchedFriends", function() { return receiveSearchedFriends; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "receiveSearchedUsers", function() { return receiveSearchedUsers; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "clearSearch", function() { return clearSearch; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "receiveErrors", function() { return receiveErrors; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "receiveFriendshipErrors", function() { return receiveFriendshipErrors; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getFriends", function() { return getFriends; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addFriend", function() { return addFriend; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "searchFriends", function() { return searchFriends; });
@@ -182,7 +182,7 @@ var REMOVE_FRIEND = 'REMOVE_FRIEND';
 var RECEIVE_SEARCHED_FRIENDS = 'RECEIVE_SEARCHED_FRIENDS';
 var RECEIVE_SEARCHED_USERS = 'RECEIVE_SEARCHED_USERS';
 var CLEAR_SEARCH = 'CLEAR_SEARCH';
-var RECEIVE_ERRORS = 'RECEIVE_ERRORS';
+var RECEIVE_FRIENDSHIP_ERRORS = 'RECEIVE_FRIENDSHIP_ERRORS';
 var receiveFriend = function receiveFriend(friend) {
   return {
     type: RECEIVE_FRIEND,
@@ -212,9 +212,9 @@ var clearSearch = function clearSearch() {
     type: CLEAR_SEARCH
   };
 };
-var receiveErrors = function receiveErrors(errors) {
+var receiveFriendshipErrors = function receiveFriendshipErrors(errors) {
   return {
-    type: RECEIVE_ERRORS,
+    type: RECEIVE_FRIENDSHIP_ERRORS,
     errors: errors
   };
 };
@@ -230,7 +230,7 @@ var addFriend = function addFriend(user) {
     return _util_friendship_api_util__WEBPACK_IMPORTED_MODULE_0__["addFriend"](user).then(function (friend) {
       return dispatch(receiveFriend(friend));
     }, function (err) {
-      return dispatch(receiveErrors(err.responseJSON));
+      return dispatch(receiveFriendshipErrors(err.responseJSON));
     });
   };
 };
@@ -284,7 +284,7 @@ var closeModal = function closeModal() {
 /*!*********************************************!*\
   !*** ./frontend/actions/session_actions.js ***!
   \*********************************************/
-/*! exports provided: RECEIVE_CURRENT_USER, LOGOUT_CURRENT_USER, RECEIVE_SESSION_ERRORS, receiveCurrentUser, logoutCurrentUser, receiveErrors, signup, login, logout */
+/*! exports provided: RECEIVE_CURRENT_USER, LOGOUT_CURRENT_USER, RECEIVE_SESSION_ERRORS, receiveCurrentUser, logoutCurrentUser, receiveSessionErrors, signup, login, logout */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -294,7 +294,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_SESSION_ERRORS", function() { return RECEIVE_SESSION_ERRORS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "receiveCurrentUser", function() { return receiveCurrentUser; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "logoutCurrentUser", function() { return logoutCurrentUser; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "receiveErrors", function() { return receiveErrors; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "receiveSessionErrors", function() { return receiveSessionErrors; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "signup", function() { return signup; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "login", function() { return login; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "logout", function() { return logout; });
@@ -314,7 +314,7 @@ var logoutCurrentUser = function logoutCurrentUser() {
     type: LOGOUT_CURRENT_USER
   };
 };
-var receiveErrors = function receiveErrors(errors) {
+var receiveSessionErrors = function receiveSessionErrors(errors) {
   return {
     type: RECEIVE_SESSION_ERRORS,
     errors: errors
@@ -325,7 +325,7 @@ var signup = function signup(user) {
     return _util_session_api_util__WEBPACK_IMPORTED_MODULE_0__["signup"](user).then(function (user) {
       return dispatch(receiveCurrentUser(user));
     }, function (err) {
-      return dispatch(receiveErrors(err.responseJSON));
+      return dispatch(receiveSessionErrors(err.responseJSON));
     });
   };
 };
@@ -334,7 +334,7 @@ var login = function login(user) {
     return _util_session_api_util__WEBPACK_IMPORTED_MODULE_0__["login"](user).then(function (user) {
       return dispatch(receiveCurrentUser(user));
     }, function (err) {
-      return dispatch(receiveErrors(err.responseJSON));
+      return dispatch(receiveSessionErrors(err.responseJSON));
     });
   };
 };
@@ -387,14 +387,15 @@ var _redirectIfLoggedOut = function _redirectIfLoggedOut(nextState, replace) {
   if (store.getState().session.currentUser === null) {
     replace('/login');
   }
-};
+}; // let navRoute = store.getState().session.currentUser ? "/" : "/dashboard";
+
 
 var App = function App() {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_modal_modal__WEBPACK_IMPORTED_MODULE_2__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", {
     className: "navbar"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
     className: "navbar-logo",
-    to: "/"
+    to: "/dashboard"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
     src: window.images.logo,
     className: "logo"
@@ -587,12 +588,18 @@ var Dashboard = /*#__PURE__*/function (_React$Component) {
       }, "$", this.state.youAreOwedAmount.toFixed(2)))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
         className: "dashboard-payments"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "settled-up-status"
-      }, Object(lodash__WEBPACK_IMPORTED_MODULE_2__["isEmpty"])(this.props.expenses.you_owe) && Object(lodash__WEBPACK_IMPORTED_MODULE_2__["isEmpty"])(this.props.expenses.you_are_owed) ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "You're all settled up!") : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "You have outstanding balances")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "settled-up"
+      }, Object(lodash__WEBPACK_IMPORTED_MODULE_2__["isEmpty"])(this.props.expenses.you_owe) && Object(lodash__WEBPACK_IMPORTED_MODULE_2__["isEmpty"])(this.props.expenses.you_are_owed) ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "You're all settled up!"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: window.images.settledUp
+      })) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "You have outstanding balances")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "you-owe"
-      }, Object(lodash__WEBPACK_IMPORTED_MODULE_2__["isEmpty"])(this.props.expenses.you_owe) ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "You're in the clear") : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, youOweUsers)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, Object(lodash__WEBPACK_IMPORTED_MODULE_2__["isEmpty"])(this.props.expenses.you_owe) ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "You're in the clear"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: window.images.youOwe
+      })) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, youOweUsers)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "you-are-owed"
-      }, Object(lodash__WEBPACK_IMPORTED_MODULE_2__["isEmpty"])(this.props.expenses.you_are_owed) ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "You don't have any outstanding expenses") : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, youAreOwedUsers))))));
+      }, Object(lodash__WEBPACK_IMPORTED_MODULE_2__["isEmpty"])(this.props.expenses.you_are_owed) ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "You don't have any outstanding expenses"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: window.images.owedYou
+      })) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, youAreOwedUsers))))));
     }
   }]);
 
@@ -829,6 +836,11 @@ var ExpenseForm = /*#__PURE__*/function (_React$Component) {
           id: "close"
         }, "x"));
       });
+      var expenseErrors = this.props.errors.map(function (el, idx) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+          key: "".concat(idx)
+        }, el);
+      });
       var formContent;
       formContent = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "add-expense-modal"
@@ -872,7 +884,9 @@ var ExpenseForm = /*#__PURE__*/function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "submit",
         value: "Save"
-      }))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null));
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+        className: "expense-errors"
+      }, expenseErrors))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null));
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, formContent);
     }
   }]);
@@ -911,7 +925,7 @@ var mapStateToProps = function mapStateToProps(state) {
   return {
     search: Object(_reducers_selectors__WEBPACK_IMPORTED_MODULE_2__["selectAllFriends"])(state.friends.userResult),
     friends: state.friends.users,
-    errors: state.friends.errors
+    errors: state.errors.expense
   };
 };
 
@@ -939,16 +953,16 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 
 /***/ }),
 
-/***/ "./frontend/components/friends/friends.jsx":
-/*!*************************************************!*\
-  !*** ./frontend/components/friends/friends.jsx ***!
-  \*************************************************/
+/***/ "./frontend/components/friends/add_friends_form.jsx":
+/*!**********************************************************!*\
+  !*** ./frontend/components/friends/add_friends_form.jsx ***!
+  \**********************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Friends; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return AddFriendsForm; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -973,15 +987,15 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
-var Friends = /*#__PURE__*/function (_React$Component) {
-  _inherits(Friends, _React$Component);
+var AddFriendsForm = /*#__PURE__*/function (_React$Component) {
+  _inherits(AddFriendsForm, _React$Component);
 
-  function Friends(props) {
+  function AddFriendsForm(props) {
     var _this;
 
-    _classCallCheck(this, Friends);
+    _classCallCheck(this, AddFriendsForm);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(Friends).call(this, props));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(AddFriendsForm).call(this, props));
     _this.state = {
       username: '',
       email: ''
@@ -991,7 +1005,7 @@ var Friends = /*#__PURE__*/function (_React$Component) {
     return _this;
   }
 
-  _createClass(Friends, [{
+  _createClass(AddFriendsForm, [{
     key: "componentDidMount",
     value: function componentDidMount() {
       this.props.getFriends();
@@ -1004,9 +1018,7 @@ var Friends = /*#__PURE__*/function (_React$Component) {
       return function (e) {
         _this2.setState(_defineProperty({}, input, e.target.value));
 
-        _this2.props.searchUsers(e.target.value).then(function (users) {
-          console.log('success');
-        });
+        _this2.props.searchUsers(e.target.value);
       };
     }
   }, {
@@ -1029,7 +1041,7 @@ var Friends = /*#__PURE__*/function (_React$Component) {
       };
       this.props.processFriendForm(user).then(function () {
         _this3.props.closeModal();
-      }, function (err) {
+      }, function () {
         _this3.clearState();
       });
     }
@@ -1054,46 +1066,185 @@ var Friends = /*#__PURE__*/function (_React$Component) {
           onClick: _this4.chooseUser
         }, " ", el.username, " ");
       });
+      var friendshipErrors = this.props.errors.map(function (el, idx) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+          key: "".concat(idx)
+        }, el);
+      });
       var formContent;
       formContent = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "add-friends-modal"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("fieldset", {
         className: "add-friend-form"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "find-a-friend"
+      }, "FIND A FRIEND"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         onSubmit: this.handleSubmit
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "friend-input"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "text",
+        type: "add-friend-username",
         value: this.state.username,
-        placeholder: "Type a username",
+        placeholder: "Search by username",
         onChange: this.userQuery('username')
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
         className: "add-friend-search"
       }, searchList)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "add-friend-button-group"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "add-friend-button"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: "add-friend-button",
         type: "submit",
         value: "Add Friend"
-      }))))));
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+        className: "friendship-errors"
+      }, friendshipErrors))));
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, formContent);
+    }
+  }]);
+
+  return AddFriendsForm;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+
+
+/***/ }),
+
+/***/ "./frontend/components/friends/add_friends_form_container.js":
+/*!*******************************************************************!*\
+  !*** ./frontend/components/friends/add_friends_form_container.js ***!
+  \*******************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _add_friends_form__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./add_friends_form */ "./frontend/components/friends/add_friends_form.jsx");
+/* harmony import */ var _actions_friendship_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../actions/friendship_actions */ "./frontend/actions/friendship_actions.js");
+/* harmony import */ var _reducers_selectors__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../reducers/selectors */ "./frontend/reducers/selectors.js");
+/* harmony import */ var _actions_modal_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../actions/modal_actions */ "./frontend/actions/modal_actions.js");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+
+
+
+
+
+
+var mapStateToProps = function mapStateToProps(state) {
+  return {
+    friends: Object(_reducers_selectors__WEBPACK_IMPORTED_MODULE_2__["selectAllFriends"])(state.friends.users),
+    search: Object(_reducers_selectors__WEBPACK_IMPORTED_MODULE_2__["selectAllFriends"])(state.friends.userResult),
+    errors: state.errors.friendship
+  };
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    processFriendForm: function processFriendForm(user) {
+      return dispatch(Object(_actions_friendship_actions__WEBPACK_IMPORTED_MODULE_1__["addFriend"])(user));
+    },
+    getFriends: function getFriends() {
+      return dispatch(Object(_actions_friendship_actions__WEBPACK_IMPORTED_MODULE_1__["getFriends"])());
+    },
+    searchFriends: function searchFriends(query) {
+      return dispatch(Object(_actions_friendship_actions__WEBPACK_IMPORTED_MODULE_1__["searchFriends"])(query));
+    },
+    searchUsers: function searchUsers(query) {
+      return dispatch(Object(_actions_friendship_actions__WEBPACK_IMPORTED_MODULE_1__["searchUsers"])(query));
+    },
+    clearSearch: function clearSearch() {
+      return dispatch(Object(_actions_friendship_actions__WEBPACK_IMPORTED_MODULE_1__["clearSearch"])());
+    },
+    openModal: function openModal() {
+      return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_3__["openModal"])('addFriend'));
+    },
+    closeModal: function closeModal() {
+      return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_3__["closeModal"])());
+    }
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_4__["connect"])(mapStateToProps, mapDispatchToProps)(_add_friends_form__WEBPACK_IMPORTED_MODULE_0__["default"]));
+
+/***/ }),
+
+/***/ "./frontend/components/friends/friends.jsx":
+/*!*************************************************!*\
+  !*** ./frontend/components/friends/friends.jsx ***!
+  \*************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Friends; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+var Friends = /*#__PURE__*/function (_React$Component) {
+  _inherits(Friends, _React$Component);
+
+  function Friends(props) {
+    var _this;
+
+    _classCallCheck(this, Friends);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Friends).call(this, props));
+    _this.state = {
+      username: '',
+      email: ''
+    };
+    return _this;
+  }
+
+  _createClass(Friends, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.props.getFriends();
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this2 = this;
+
       var listContent = this.props.friends.map(function (user, idx) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
           key: idx
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          src: window.images.mouseIcon,
+          className: "mouse-icon"
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "friend-username"
         }), user.username);
       });
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, formContent, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "friends-list"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "friends-bar"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "friends"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "FRIENDS"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "add-button",
         onClick: function onClick() {
-          return _this4.props.openModal('addFriend');
+          return _this2.props.openModal('addFriend');
         }
-      }, "+add")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, listContent)));
+      }, "+add")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, listContent));
     }
   }]);
 
@@ -1128,7 +1279,7 @@ var mapStateToProps = function mapStateToProps(state) {
   return {
     friends: Object(_reducers_selectors__WEBPACK_IMPORTED_MODULE_2__["selectAllFriends"])(state.friends.users),
     search: Object(_reducers_selectors__WEBPACK_IMPORTED_MODULE_2__["selectAllFriends"])(state.friends.userResult),
-    errors: state.friends.users
+    errors: state.errors.friendship
   };
 };
 
@@ -1143,11 +1294,11 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     searchFriends: function searchFriends(query) {
       return dispatch(Object(_actions_friendship_actions__WEBPACK_IMPORTED_MODULE_1__["searchFriends"])(query));
     },
-    clearSearch: function clearSearch() {
-      return dispatch(Object(_actions_friendship_actions__WEBPACK_IMPORTED_MODULE_1__["clearSearch"])());
-    },
     searchUsers: function searchUsers(query) {
       return dispatch(Object(_actions_friendship_actions__WEBPACK_IMPORTED_MODULE_1__["searchUsers"])(query));
+    },
+    clearSearch: function clearSearch() {
+      return dispatch(Object(_actions_friendship_actions__WEBPACK_IMPORTED_MODULE_1__["clearSearch"])());
     },
     openModal: function openModal() {
       return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_3__["openModal"])('addFriend'));
@@ -1279,7 +1430,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _actions_modal_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../actions/modal_actions */ "./frontend/actions/modal_actions.js");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var _friends_friends_container__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../friends/friends_container */ "./frontend/components/friends/friends_container.js");
+/* harmony import */ var _friends_add_friends_form_container__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../friends/add_friends_form_container */ "./frontend/components/friends/add_friends_form_container.js");
 /* harmony import */ var _expenses_expense_form_container__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../expenses/expense_form_container */ "./frontend/components/expenses/expense_form_container.js");
 /* harmony import */ var _settle_up_settle_up_form_container__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../settle_up/settle_up_form_container */ "./frontend/components/settle_up/settle_up_form_container.js");
 
@@ -1301,7 +1452,7 @@ function Modal(_ref) {
 
   switch (modal) {
     case 'addFriend':
-      component = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_friends_friends_container__WEBPACK_IMPORTED_MODULE_3__["default"], null);
+      component = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_friends_add_friends_form_container__WEBPACK_IMPORTED_MODULE_3__["default"], null);
       break;
 
     case 'addExpense':
@@ -1825,12 +1976,12 @@ var SettleUpForm = /*#__PURE__*/function (_React$Component) {
       var _this4 = this;
 
       e.preventDefault();
-      var settleUpData = {
+      var settleUpInput = {
         settleUpFrom: this.findId(this.state.settleUpFrom),
         settleUpTo: this.findId(this.state.settleUpTo),
         amount: this.state.amount
       };
-      this.props.settleUpBill(settleUpData).then(function () {
+      this.props.settleUpExpense(settleUpInput).then(function () {
         _this4.props.closeModal();
 
         _this4.props.clearSearch();
@@ -1845,7 +1996,7 @@ var SettleUpForm = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "handleClick",
     value: function handleClick(arg) {
-      e.preventDefault();
+      event.preventDefault();
 
       if (arg === 'settleUpFrom') {
         this.setState({
@@ -1942,7 +2093,7 @@ var SettleUpForm = /*#__PURE__*/function (_React$Component) {
       });
       settleUpToList.unshift(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
         key: Object.keys(this.props.friends).length,
-        ondClick: this.chooseSettleUpTo
+        onClick: this.chooseSettleUpTo
       }, this.props.currentUser.username));
       var formContent;
       formContent = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -2089,12 +2240,48 @@ var entitiesReducer = Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
 /* harmony import */ var _session_errors_reducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./session_errors_reducer */ "./frontend/reducers/session_errors_reducer.js");
+/* harmony import */ var _friendship_errors_reducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./friendship_errors_reducer */ "./frontend/reducers/friendship_errors_reducer.js");
+/* harmony import */ var _expense_errors_reducer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./expense_errors_reducer */ "./frontend/reducers/expense_errors_reducer.js");
+
+
 
 
 var errorsReducer = Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])({
-  session: _session_errors_reducer__WEBPACK_IMPORTED_MODULE_1__["default"]
+  session: _session_errors_reducer__WEBPACK_IMPORTED_MODULE_1__["default"],
+  friendship: _friendship_errors_reducer__WEBPACK_IMPORTED_MODULE_2__["default"],
+  expense: _expense_errors_reducer__WEBPACK_IMPORTED_MODULE_3__["default"]
 });
 /* harmony default export */ __webpack_exports__["default"] = (errorsReducer);
+
+/***/ }),
+
+/***/ "./frontend/reducers/expense_errors_reducer.js":
+/*!*****************************************************!*\
+  !*** ./frontend/reducers/expense_errors_reducer.js ***!
+  \*****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _actions_expense_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/expense_actions */ "./frontend/actions/expense_actions.js");
+
+/* harmony default export */ __webpack_exports__["default"] = (function () {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+  Object.freeze(state);
+
+  switch (action.type) {
+    case _actions_expense_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_EXPENSE_ERRORS"]:
+      return action.errors;
+
+    case _actions_expense_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_EXPENSES"]:
+      return [];
+
+    default:
+      return state;
+  }
+});
 
 /***/ }),
 
@@ -2113,8 +2300,7 @@ var initialState = {
   expenseList: {
     "you_owe": {},
     "you_are_owed": {}
-  },
-  errors: {}
+  }
 };
 
 var expenseReducer = function expenseReducer() {
@@ -2124,10 +2310,6 @@ var expenseReducer = function expenseReducer() {
   Object.freeze(state);
 
   switch (action.type) {
-    case _actions_expense_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_ERRORS"]:
-      nextState.errors = action.errors;
-      return nextState;
-
     case _actions_expense_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_EXPENSES"]:
       nextState.expenseList = action.expenses;
       return nextState;
@@ -2138,6 +2320,36 @@ var expenseReducer = function expenseReducer() {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (expenseReducer);
+
+/***/ }),
+
+/***/ "./frontend/reducers/friendship_errors_reducer.js":
+/*!********************************************************!*\
+  !*** ./frontend/reducers/friendship_errors_reducer.js ***!
+  \********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _actions_friendship_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/friendship_actions */ "./frontend/actions/friendship_actions.js");
+
+/* harmony default export */ __webpack_exports__["default"] = (function () {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+  Object.freeze(state);
+
+  switch (action.type) {
+    case _actions_friendship_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_FRIENDSHIP_ERRORS"]:
+      return action.errors;
+
+    case _actions_friendship_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_FRIEND"]:
+      return [];
+
+    default:
+      return state;
+  }
+});
 
 /***/ }),
 
@@ -2156,18 +2368,17 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var initialState = {
-  users: {},
-  errors: {}
+  users: {}
 };
 
 var friendshipsReducer = function friendshipsReducer() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
   var action = arguments.length > 1 ? arguments[1] : undefined;
+  Object.freeze(state);
   var nextState = Object.assign({}, state);
   var keys;
   var tempState;
   var finalState;
-  Object.freeze(state);
 
   switch (action.type) {
     case _actions_friendship_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_FRIEND"]:
@@ -2225,14 +2436,6 @@ var friendshipsReducer = function friendshipsReducer() {
     case _actions_friendship_actions__WEBPACK_IMPORTED_MODULE_0__["CLEAR_SEARCH"]:
       nextState.userResult = [];
       return nextState;
-
-    case _actions_friendship_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_ERRORS"]:
-      tempState = lodash_merge__WEBPACK_IMPORTED_MODULE_1___default()({}, {
-        users: nextState
-      }, {
-        errors: action.errors
-      });
-      return tempState;
 
     default:
       return nextState;
@@ -2380,7 +2583,7 @@ var _nullUser = Object.freeze({
 var sessionReducer = function sessionReducer() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : _nullUser;
   var action = arguments.length > 1 ? arguments[1] : undefined;
-  Object.freeze(state); // debugger;
+  Object.freeze(state);
 
   switch (action.type) {
     case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_CURRENT_USER"]:
@@ -2536,11 +2739,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchExpenses", function() { return fetchExpenses; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "settleUpExpense", function() { return settleUpExpense; });
 var createExpense = function createExpense(expenses) {
+  console.log(expenses);
   return $.ajax({
     url: '/api/expenses',
     method: 'POST',
     data: {
-      expenses: expenses
+      expenses: expenses,
+      recipients: expenses.recipients
     }
   });
 };

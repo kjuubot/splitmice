@@ -1,7 +1,7 @@
 import React from 'react';
 import { closeModal } from '../../actions/modal_actions';
 import { connect } from 'react-redux';
-import FriendsContainer from '../friends/friends_container';
+import AddFriendsFormContainer from '../friends/add_friends_form_container';
 import ExpenseFormContainer from '../expenses/expense_form_container';
 import SettleUpFormContainer from '../settle_up/settle_up_form_container';
 
@@ -12,7 +12,7 @@ function Modal({ modal, closeModal }) {
     let component;
     switch (modal) {
         case 'addFriend':
-            component = <FriendsContainer />;
+            component = <AddFriendsFormContainer />;
             break;
         case 'addExpense':
             component = <ExpenseFormContainer />;

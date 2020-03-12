@@ -1,8 +1,7 @@
-import { RECEIVE_ERRORS, RECEIVE_EXPENSES, } from '../actions/expense_actions';
+import { RECEIVE_EXPENSES } from '../actions/expense_actions';
 
 const initialState = {
     expenseList: { "you_owe": {}, "you_are_owed": {} },
-    errors: {},
 };
 
 const expenseReducer = (state = initialState, action) => {
@@ -10,9 +9,6 @@ const expenseReducer = (state = initialState, action) => {
     Object.freeze(state);
     
     switch (action.type) {
-        case RECEIVE_ERRORS:
-            nextState.errors = action.errors;
-            return nextState;
         case RECEIVE_EXPENSES:
             nextState.expenseList = action.expenses;
             return nextState;

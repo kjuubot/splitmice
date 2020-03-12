@@ -1,12 +1,14 @@
 class Api::ExpensesController < ApplicationController
     def create
-        split = expense_params[:amount].to_f / (expense_params[:recipients].length + 1)
+        num_recipients = (!params[:recipients].nil? ? params[:recipients].length : 1)
+
+        split = expense_params[:amount].to_f / num_recipients
 
         @expense = Expense.new(amount: expense_params[:amount].to_i,
             title: expense_params[:title],
             date: expense_params[:date],
             creator_id: current_user.id,
-            split: expense_params[:recipients].length + 1,
+            num_people: num_recipients,
             )
 
         if @expense.save
@@ -25,8 +27,6 @@ class Api::ExpensesController < ApplicationController
         @expenses = current_user.net_payments(current_user.id)
         render json: @expenses.to_json
     end
-
-
 
     def update
         new_split_info = current_user.settle_up(expense_params[:settleUpFrom].to_i, expense_params[:settleUpTo].to_i, expense_params[:amount].to_f)
@@ -88,7 +88,7 @@ class Api::ExpensesController < ApplicationController
             Split.find(split[0]).update(recipient_paid: split[1], split_amount: split[2])
         elsif split[0].is_a? String
             new_expense = Expense.create(amount: split[2],
-                                    description:"Overpayment",
+                                    title:"Overpayment",
                                     date: Time.now.strftime("%Y/%m/%d").gsub(/\//,'-'),
                                     creator_id: expense_params[:settleUpFrom],
                                     split: 2
@@ -97,13 +97,9 @@ class Api::ExpensesController < ApplicationController
         end
     end
 
-    def destroy
-
-    end
-
     private
 
     def expense_params
-        params.require(:expenses).permit(:amount, {:recipients => []}, :description, :expense_date, :settleUpFrom, :settleUpTo)
+        params.require(:expenses).permit(:title, :amount, {:recipients => []}, :date, :settleUpFrom, :settleUpTo)
     end
 end

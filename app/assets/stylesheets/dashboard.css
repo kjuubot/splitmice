@@ -10,9 +10,9 @@
 
 .dashboard-sidebar {
     /* border: 1px solid red; */
-    padding-left: 10%;
-    padding-right: 50px;
-    box-shadow: 0 0 3px rgba(0,0,0,0.5);
+    padding-right: 130px;
+    width: 15vw;
+    box-shadow: 2px 0 3px -3px rgba(0,0,0,0.5);
     z-index: 1;
 }
 
@@ -41,6 +41,7 @@
 }
 
 .dashboard-actions button {
+    border: none;
     border-radius: 5px;
     box-shadow: 0 1px 0 0 rgba(55, 59, 63, 0.25);
     font-size: 12px;
@@ -54,13 +55,15 @@
 }
 
 .dashboard-actions button:hover {
+    cursor: pointer;
     box-shadow: none;
     position: relative;
     top: 1px;
 }
 
 .add-expense-button {
-    color: #FD5215;
+    background-color: #FD5215;
+    color: white;
 }
 
 .settle-up-button {
@@ -71,6 +74,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    padding-top: 10px;
     padding-left: 50px;
     padding-right: 10%;
 }
@@ -114,8 +118,25 @@
     padding-right: 10%;
 }
 
-.settled-up-status, .you-owe, .you-are-owed {
+.settled-up, .you-owe, .you-are-owed {
     /* border: 1px solid red; */
     width: 33%;
+    margin-top: 30px;
     text-align: center;
+}
+
+.settled-up img {
+    width: 100%;
+    margin-top: 70px;
+}
+
+.you-are-owed img {
+    /* border: 1px solid red; */
+    width: 100%;
+    margin-top: 125px;
+}
+
+.you-owe img {
+    width: 100%;
+    margin-top: 80px;
 }

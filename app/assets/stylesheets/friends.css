@@ -1,0 +1,41 @@
+.friends-list {
+    /* border: 1px solid red; */
+    position: relative;
+    height: 100%;
+    min-width: 150px;
+    margin-left: 70%;
+    margin-right: 10px;
+    font-family: 'Lato', sans-serif;
+    color: #373b3f;
+    outline: none;
+    line-height: 1.5em;
+    font-size: 15px;
+}
+
+.friends-bar {
+    /* border: 1px solid red; */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 20px;
+    padding-bottom: 10px;
+    
+    font-size: 12px;
+    line-height: 1em;
+    color: #cccccc;
+}
+
+.add-button:hover {
+    cursor: pointer;
+}
+
+.mouse-icon {
+    position: relative;
+    top: 3px;
+    height: 18px;
+    margin-right: 5px;
+}
+
+.friend-username {
+    display: inline-block;
+}

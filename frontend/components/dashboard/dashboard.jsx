@@ -109,16 +109,22 @@ export default class Dashboard extends React.Component {
                         </section>
 
                         <section className="dashboard-payments">
-                            <div className="settled-up-status">
+                            <div className="settled-up">
                                 {isEmpty(this.props.expenses.you_owe) && isEmpty(this.props.expenses.you_are_owed) ? (
-                                    <div>You're all settled up!</div>
+                                    <div>
+                                        <div>You're all settled up!</div>
+                                        <img src={window.images.settledUp} />
+                                    </div>
                                 ) : (
                                         <div>You have outstanding balances</div>
                                     )}
                             </div>
                             <div className="you-owe">
                                 {isEmpty(this.props.expenses.you_owe) ? (
-                                    <div>You're in the clear</div>
+                                    <div>
+                                        <div>You're in the clear</div>
+                                        <img src={window.images.youOwe} />
+                                    </div>
                                 ) : (
                                         <ul>
                                             {youOweUsers}
@@ -128,7 +134,10 @@ export default class Dashboard extends React.Component {
 
                             <div className="you-are-owed">
                                 {isEmpty(this.props.expenses.you_are_owed) ? (
-                                    <div>You don't have any outstanding expenses</div>
+                                    <div>
+                                        <div>You don't have any outstanding expenses</div>
+                                        <img src={window.images.owedYou} />
+                                    </div>
                                 ) : (
                                         <ul>
                                             {youAreOwedUsers}

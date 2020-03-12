@@ -42,9 +42,12 @@ export default class SettleUpForm extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        const settleUpData = { settleUpFrom: this.findId(this.state.settleUpFrom), settleUpTo: this.findId(this.state.settleUpTo), amount: this.state.amount };
+        const settleUpInput = {
+            settleUpFrom: this.findId(this.state.settleUpFrom),
+            settleUpTo: this.findId(this.state.settleUpTo),
+            amount: this.state.amount };
 
-        this.props.settleUpBill(settleUpData).then(
+        this.props.settleUpExpense(settleUpInput).then(
             () => {
                 this.props.closeModal();
                 this.props.clearSearch();
@@ -52,13 +55,12 @@ export default class SettleUpForm extends React.Component {
             }, err => {
                 this.props.clearSearch();
                 this.clearState();
-
             }
         );
     }
 
     handleClick(arg) {
-        e.preventDefault();
+        event.preventDefault();
 
         if (arg === 'settleUpFrom') {
             this.setState({ searchType: 'settleUpFrom' });
@@ -125,7 +127,7 @@ export default class SettleUpForm extends React.Component {
         });
 
         settleUpToList.unshift(
-            <li key={Object.keys(this.props.friends).length} ondClick={this.chooseSettleUpTo}>{this.props.currentUser.username}</li>
+            <li key={Object.keys(this.props.friends).length} onClick={this.chooseSettleUpTo}>{this.props.currentUser.username}</li>
         )
 
         let formContent;
