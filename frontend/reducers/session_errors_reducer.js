@@ -6,12 +6,12 @@ export default (state = [], action) => {
     switch (action.type) {
         case RECEIVE_SESSION_ERRORS:
             return action.errors;
-        case CLEAR_SESSION_ERRORS:
-            newState = {
-                currentUser: action.currentUser,
-                errors: []
-            };
-            return newState;
+        // case CLEAR_SESSION_ERRORS:
+        //     newState = {
+        //         currentUser: action.currentUser,
+        //         errors: []
+        //     };
+        //     return newState;
         case RECEIVE_CURRENT_USER:
             return [];
         default:
