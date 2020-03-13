@@ -17,16 +17,6 @@ export default class SettleUpForm extends React.Component {
         this.handleClick = this.handleClick.bind(this);
     }
 
-    queryUsers(input) {
-        return (
-            e => {
-                this.setState({ [input]: e.target.value });
-                this.setState({ searchType: input });
-                this.props.searchFriends(e.target.value).then(users => { console.log("success"); });
-            }
-        );
-    }
-
     update(input) {
         return (
             e => {
@@ -133,58 +123,56 @@ export default class SettleUpForm extends React.Component {
         let formContent;
         formContent = (
             <div className="settle-up-modal">
-                    <div className="main-settle-up-modal">
-                        <h1>Settle Up</h1>
-                        <fieldset className="settle-up-form">
-                            <form onSubmit={this.handleSubmit}>
+                <div className="settle-up-main">
+                    <div id="record-a-payment">RECORD A PAYMENT</div>
+                    <fieldset className="settle-up-form">
+                        <form onSubmit={this.handleSubmit}>
 
-                                <div className="settle-up-info">
+                            <div className="settle-up-info">
 
-                                    <div className="settle-up-payment">
-                                        <input type="text" value={this.state.settleUpFrom} placeholder="Enter Payer" onClick={() => this.handleClick("settleUpFrom")} />
+                                <div className="settle-up-payment">
+                                    <input type="text" value={this.state.settleUpFrom} placeholder="Payer" onClick={() => this.handleClick("settleUpFrom")} />
 
-                                        <div>Paid</div>
+                                    <div id="paid">paid</div>
 
-                                        <input type="text" value={this.state.settleUpTo} placeholder="Enter Recipient" onClick={() => this.handleClick("settleUpTo")} />
-                                    </div>
-
-                                    <input type="number" value={this.state.amount} placeholder="$0.00" onChange={this.update('amount')} />
+                                    <input type="text" value={this.state.settleUpTo} placeholder="Recipient" onClick={() => this.handleClick("settleUpTo")} />
                                 </div>
 
-                                <br />
+                                <input type="number" value={this.state.amount} placeholder="$0.00" onChange={this.update('amount')} />
+                            </div>
 
-                                <div className="settle-up-button-group">
-                                    <div className="add-friend-button">
-                                        <input type="submit" value="Save"></input>
-                                    </div>
-                                </div>
+                            <br />
 
-                            </form>
-                        </fieldset>
+                            <div className="settle-up-button-group">
+                                <input className="settle-up-submit" type="submit" value="Save"></input>
+                            </div>
+
+                        </form>
+                    </fieldset>
+                </div>
+                <br />
+
+                {this.state.searchType === 'settleUpFrom' ? (
+                    <div className="settle-up-user-list">
+                    <div id="select-a-friend">SELECT A PAYER</div>
+                        <ul className="settle-up-friends-li">
+                            {settleUpFromList}
+                        </ul>
                     </div>
-                    <br />
+                ) : (
+                        <div></div>
+                    )}
 
-                    {this.state.searchType === 'settleUpFrom' ? (
-                        <div className="side-modal">
-                            <h1>Choose a Payer</h1>
-                            <ul className="settle-up-user-list">
-                                {settleUpFromList}
-                            </ul>
-                        </div>
-                    ) : (
-                            <div></div>
-                        )}
-
-                    {this.state.searchType === 'settleUpTo' ? (
-                        <div className="side-modal">
-                            <h1>Choose a Recipient</h1>
-                            <ul className="settle-up-user-list">
-                                {settleUpToList}
-                            </ul>
-                        </div>
-                    ) : (
-                            <div></div>
-                        )}
+                {this.state.searchType === 'settleUpTo' ? (
+                    <div className="settle-up-user-list">
+                    <div id="select-a-friend">SELECT A RECIPIENT</div>
+                        <ul className="settle-up-friends-li">
+                            {settleUpToList}
+                        </ul>
+                    </div>
+                ) : (
+                        <div></div>
+                    )}
             </div>
         );
 

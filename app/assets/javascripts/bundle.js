@@ -284,7 +284,7 @@ var closeModal = function closeModal() {
 /*!*********************************************!*\
   !*** ./frontend/actions/session_actions.js ***!
   \*********************************************/
-/*! exports provided: RECEIVE_CURRENT_USER, LOGOUT_CURRENT_USER, RECEIVE_SESSION_ERRORS, receiveCurrentUser, logoutCurrentUser, receiveSessionErrors, signup, login, logout */
+/*! exports provided: RECEIVE_CURRENT_USER, LOGOUT_CURRENT_USER, RECEIVE_SESSION_ERRORS, CLEAR_SESSION_ERRORS, receiveCurrentUser, logoutCurrentUser, receiveSessionErrors, clearSessionErrors, signup, login, logout */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -292,9 +292,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_CURRENT_USER", function() { return RECEIVE_CURRENT_USER; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LOGOUT_CURRENT_USER", function() { return LOGOUT_CURRENT_USER; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_SESSION_ERRORS", function() { return RECEIVE_SESSION_ERRORS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CLEAR_SESSION_ERRORS", function() { return CLEAR_SESSION_ERRORS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "receiveCurrentUser", function() { return receiveCurrentUser; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "logoutCurrentUser", function() { return logoutCurrentUser; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "receiveSessionErrors", function() { return receiveSessionErrors; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "clearSessionErrors", function() { return clearSessionErrors; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "signup", function() { return signup; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "login", function() { return login; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "logout", function() { return logout; });
@@ -303,6 +305,7 @@ __webpack_require__.r(__webpack_exports__);
 var RECEIVE_CURRENT_USER = 'RECEIVE_CURRENT_USER';
 var LOGOUT_CURRENT_USER = 'LOGOUT_CURRENT_USER';
 var RECEIVE_SESSION_ERRORS = 'RECEIVE_SESSION_ERRORS';
+var CLEAR_SESSION_ERRORS = "CLEAR_SESSION_ERRORS";
 var receiveCurrentUser = function receiveCurrentUser(currentUser) {
   return {
     type: RECEIVE_CURRENT_USER,
@@ -318,6 +321,11 @@ var receiveSessionErrors = function receiveSessionErrors(errors) {
   return {
     type: RECEIVE_SESSION_ERRORS,
     errors: errors
+  };
+};
+var clearSessionErrors = function clearSessionErrors() {
+  return {
+    type: CLEAR_SESSION_ERRORS
   };
 };
 var signup = function signup(user) {
@@ -395,7 +403,7 @@ var App = function App() {
     className: "navbar"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
     className: "navbar-logo",
-    to: "/dashboard"
+    to: "/"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
     src: window.images.logo,
     className: "logo"
@@ -591,15 +599,11 @@ var Dashboard = /*#__PURE__*/function (_React$Component) {
         className: "settled-up"
       }, Object(lodash__WEBPACK_IMPORTED_MODULE_2__["isEmpty"])(this.props.expenses.you_owe) && Object(lodash__WEBPACK_IMPORTED_MODULE_2__["isEmpty"])(this.props.expenses.you_are_owed) ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "You're all settled up!"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         src: window.images.settledUp
-      })) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "You have outstanding balances")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      })) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "You have outstanding balances.")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "you-owe"
-      }, Object(lodash__WEBPACK_IMPORTED_MODULE_2__["isEmpty"])(this.props.expenses.you_owe) ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "You're in the clear"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: window.images.youOwe
-      })) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, youOweUsers)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, Object(lodash__WEBPACK_IMPORTED_MODULE_2__["isEmpty"])(this.props.expenses.you_owe) ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "You're in the clear.") : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, youOweUsers)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "you-are-owed"
-      }, Object(lodash__WEBPACK_IMPORTED_MODULE_2__["isEmpty"])(this.props.expenses.you_are_owed) ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "You don't have any outstanding expenses"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: window.images.owedYou
-      })) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, youAreOwedUsers))))));
+      }, Object(lodash__WEBPACK_IMPORTED_MODULE_2__["isEmpty"])(this.props.expenses.you_are_owed) ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "You're totally reimbursed.") : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, youAreOwedUsers))))));
     }
   }]);
 
@@ -829,11 +833,11 @@ var ExpenseForm = /*#__PURE__*/function (_React$Component) {
       });
       var selectedUsers = this.state.recipients.map(function (el, idx) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+          className: "expense-selected-users",
           key: idx,
-          className: "selected",
           onClick: _this5.removeRecipient
-        }, el, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          id: "close"
+        }, el, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+          id: "remove-friend"
         }, "x"));
       });
       var expenseErrors = this.props.errors.map(function (el, idx) {
@@ -844,47 +848,45 @@ var ExpenseForm = /*#__PURE__*/function (_React$Component) {
       var formContent;
       formContent = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "add-expense-modal"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Create an expense"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("fieldset", {
-        className: "add-friend-form"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "create-an-expense"
+      }, "CREATE AN EXPENSE"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("fieldset", {
+        className: "add-expense-form"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         onSubmit: this.handleSubmit
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "expense-input"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
-        className: "expense-user-input"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "expense-search-results"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "With you and:"), selectedUsers, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "expense-friends"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        id: "with-you-and"
+      }, "With you and:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, selectedUsers)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
+        id: "expense-friends-input",
         value: this.state.username,
-        placeholder: "Enter People Here",
+        placeholder: "Enter username",
         onChange: this.userQuery('username')
-      }))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "expense-friend-search"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "expense-search-results"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, searchList)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "expense-info"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
         value: this.state.title,
-        placeholder: "Enter Title",
+        placeholder: "Enter title",
         onChange: this.update('title')
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "number",
         value: this.state.amount,
-        placeholder: "Enter Amount",
+        placeholder: "$0.00",
         onChange: this.update('amount')
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "date",
         value: this.state.date,
         onChange: this.update('date')
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "expense-button-group"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "add-friend-button"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: "add-expense-button",
         type: "submit",
         value: "Save"
-      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
         className: "expense-errors"
       }, expenseErrors))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null));
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, formContent);
@@ -1711,7 +1713,10 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
     };
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
     return _this;
-  }
+  } // componentDidMount() {
+  //     this.props.clearSessionErrors();
+  // }
+
 
   _createClass(SessionForm, [{
     key: "update",
@@ -1736,6 +1741,7 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
+      // console.log(this.props)
       var content;
       var loginErrors = this.props.errors.map(function (el, idx) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
@@ -1931,31 +1937,14 @@ var SettleUpForm = /*#__PURE__*/function (_React$Component) {
   }
 
   _createClass(SettleUpForm, [{
-    key: "queryUsers",
-    value: function queryUsers(input) {
+    key: "update",
+    value: function update(input) {
       var _this2 = this;
 
       return function (e) {
         _this2.setState(_defineProperty({}, input, e.target.value));
 
         _this2.setState({
-          searchType: input
-        });
-
-        _this2.props.searchFriends(e.target.value).then(function (users) {
-          console.log("success");
-        });
-      };
-    }
-  }, {
-    key: "update",
-    value: function update(input) {
-      var _this3 = this;
-
-      return function (e) {
-        _this3.setState(_defineProperty({}, input, e.target.value));
-
-        _this3.setState({
           searchType: ''
         });
       };
@@ -1973,7 +1962,7 @@ var SettleUpForm = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "handleSubmit",
     value: function handleSubmit(e) {
-      var _this4 = this;
+      var _this3 = this;
 
       e.preventDefault();
       var settleUpInput = {
@@ -1982,15 +1971,15 @@ var SettleUpForm = /*#__PURE__*/function (_React$Component) {
         amount: this.state.amount
       };
       this.props.settleUpExpense(settleUpInput).then(function () {
-        _this4.props.closeModal();
+        _this3.props.closeModal();
 
-        _this4.props.clearSearch();
+        _this3.props.clearSearch();
 
-        _this4.clearState();
+        _this3.clearState();
       }, function (err) {
-        _this4.props.clearSearch();
+        _this3.props.clearSearch();
 
-        _this4.clearState();
+        _this3.clearState();
       });
     }
   }, {
@@ -2072,13 +2061,13 @@ var SettleUpForm = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      var _this5 = this;
+      var _this4 = this;
 
       var friendArray = Object.values(this.props.friends);
       var settleUpFromList = friendArray.map(function (user, idx) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
           key: idx,
-          onClick: _this5.chooseSettleUpFrom
+          onClick: _this4.chooseSettleUpFrom
         }, user.username);
       });
       settleUpFromList.unshift(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
@@ -2088,7 +2077,7 @@ var SettleUpForm = /*#__PURE__*/function (_React$Component) {
       var settleUpToList = friendArray.map(function (user, idx) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
           key: idx,
-          onClick: _this5.chooseSettleUpTo
+          onClick: _this4.chooseSettleUpTo
         }, user.username);
       });
       settleUpToList.unshift(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
@@ -2099,8 +2088,10 @@ var SettleUpForm = /*#__PURE__*/function (_React$Component) {
       formContent = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "settle-up-modal"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "main-settle-up-modal"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Settle Up"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("fieldset", {
+        className: "settle-up-main"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "record-a-payment"
+      }, "RECORD A PAYMENT"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("fieldset", {
         className: "settle-up-form"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         onSubmit: this.handleSubmit
@@ -2111,16 +2102,18 @@ var SettleUpForm = /*#__PURE__*/function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
         value: this.state.settleUpFrom,
-        placeholder: "Enter Payer",
+        placeholder: "Payer",
         onClick: function onClick() {
-          return _this5.handleClick("settleUpFrom");
+          return _this4.handleClick("settleUpFrom");
         }
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Paid"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "paid"
+      }, "paid"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
         value: this.state.settleUpTo,
-        placeholder: "Enter Recipient",
+        placeholder: "Recipient",
         onClick: function onClick() {
-          return _this5.handleClick("settleUpTo");
+          return _this4.handleClick("settleUpTo");
         }
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "number",
@@ -2129,19 +2122,22 @@ var SettleUpForm = /*#__PURE__*/function (_React$Component) {
         onChange: this.update('amount')
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "settle-up-button-group"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "add-friend-button"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: "settle-up-submit",
         type: "submit",
         value: "Save"
-      })))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), this.state.searchType === 'settleUpFrom' ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "side-modal"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Choose a Payer"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+      }))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), this.state.searchType === 'settleUpFrom' ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "settle-up-user-list"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "select-a-friend"
+      }, "SELECT A PAYER"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+        className: "settle-up-friends-li"
       }, settleUpFromList)) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null), this.state.searchType === 'settleUpTo' ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "side-modal"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Choose a Recipient"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
         className: "settle-up-user-list"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "select-a-friend"
+      }, "SELECT A RECIPIENT"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+        className: "settle-up-friends-li"
       }, settleUpToList)) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null));
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, formContent);
     }
@@ -2553,6 +2549,13 @@ __webpack_require__.r(__webpack_exports__);
   switch (action.type) {
     case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_SESSION_ERRORS"]:
       return action.errors;
+
+    case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__["CLEAR_SESSION_ERRORS"]:
+      newState = {
+        currentUser: action.currentUser,
+        errors: []
+      };
+      return newState;
 
     case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_CURRENT_USER"]:
       return [];

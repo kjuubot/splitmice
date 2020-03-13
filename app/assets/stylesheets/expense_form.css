@@ -1,0 +1,95 @@
+.add-expense-modal {
+    border: 1px solid #cccccc;
+    border-radius: 10px;
+    box-shadow: 0 0 3px 0 rgba(55, 59, 63, 0.25);
+    padding: 100px;
+    font-family: 'Lato', sans-serif;
+    color: #373b3f;
+    outline: none;
+}
+
+.expense-friends {
+    display: flex;
+    font-size: 14px;
+    margin-bottom: 8px;
+}
+
+#expense-friends-input {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.expense-search-results {
+    font-size: 13px;
+    line-height: 1.4em;
+}
+
+.expense-selected-users {
+    display: inline-block;
+    position: relative;
+    bottom: 2px;
+    border: 1px solid #48be9d9f;
+    border-radius: 2px;
+    padding-left: 4px;
+    padding-right: 4px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    margin-right: 2px;
+    font-size: 12px;
+    list-style: none;
+}
+
+#remove-friend {
+    /* border: 1px solid red; */
+    margin-left: 10px;
+    font-size: 10px;
+    position: relative;
+    bottom: 1px;
+    color: #48be9d9f;
+}
+
+#remove-friend:hover {
+    cursor: pointer;
+}
+
+#with-you-and {
+    margin-right: 5px;
+}
+
+.expense-info {
+    margin-top: 10px;
+}
+
+.add-expense-button {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 1px 0 0 rgba(55, 59, 63, 0.25);
+    font-size: 11px;
+    font-weight: 40;
+    text-decoration: none;
+    background-color: #FD5215;
+    color: white;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    padding-left: 11px;
+    padding-right: 11px;
+}
+
+.add-expense-button:hover {
+    cursor: pointer;
+    box-shadow: none;
+    position: relative;
+    top: 1px;
+}
+
+#create-an-expense {
+    /* border: 1px solid red; */
+    margin-bottom: 15px;
+    font-size: 14px;
+    color: #999999;
+    text-align: center;
+    letter-spacing: 0.4px;
+}

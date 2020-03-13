@@ -25,7 +25,7 @@ const App = () => (
     <div>
         <Modal />
         <header className="navbar">
-            <Link className="navbar-logo" to="/dashboard">
+            <Link className="navbar-logo" to="/">
                 <img src={window.images.logo} className="logo" />
                 <span id="app-name">Splitmice</span>
             </Link>

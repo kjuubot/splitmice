@@ -74,7 +74,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding-top: 10px;
+    margin-top: 20px;
     padding-left: 50px;
     padding-right: 10%;
 }
@@ -126,17 +126,9 @@
 }
 
 .settled-up img {
-    width: 100%;
-    margin-top: 70px;
-}
-
-.you-are-owed img {
     /* border: 1px solid red; */
-    width: 100%;
-    margin-top: 125px;
-}
-
-.you-owe img {
-    width: 100%;
-    margin-top: 80px;
+    width: 350px;
+    position: absolute;
+    left: 44%;
+    margin-top: 130px;
 }

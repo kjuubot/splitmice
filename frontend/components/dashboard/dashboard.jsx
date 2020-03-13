@@ -116,15 +116,12 @@ export default class Dashboard extends React.Component {
                                         <img src={window.images.settledUp} />
                                     </div>
                                 ) : (
-                                        <div>You have outstanding balances</div>
+                                        <div>You have outstanding balances.</div>
                                     )}
                             </div>
                             <div className="you-owe">
                                 {isEmpty(this.props.expenses.you_owe) ? (
-                                    <div>
-                                        <div>You're in the clear</div>
-                                        <img src={window.images.youOwe} />
-                                    </div>
+                                    <div>You're in the clear.</div>
                                 ) : (
                                         <ul>
                                             {youOweUsers}
@@ -134,10 +131,7 @@ export default class Dashboard extends React.Component {
 
                             <div className="you-are-owed">
                                 {isEmpty(this.props.expenses.you_are_owed) ? (
-                                    <div>
-                                        <div>You don't have any outstanding expenses</div>
-                                        <img src={window.images.owedYou} />
-                                    </div>
+                                    <div>You're totally reimbursed.</div>
                                 ) : (
                                         <ul>
                                             {youAreOwedUsers}

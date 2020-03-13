@@ -13,6 +13,10 @@ export default class SessionForm extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
+    // componentDidMount() {
+    //     this.props.clearSessionErrors();
+    // }
+
     update(field) {
         return e => this.setState({
             [field]: e.currentTarget.value
@@ -26,6 +30,7 @@ export default class SessionForm extends React.Component {
     }
 
     render() {
+        // console.log(this.props)
         let content;
 
         const loginErrors = this.props.errors.map((el, idx) => {
