@@ -1,24 +1,30 @@
-# README
+![alt text](https://github.com/kjuubot/splitmice/blob/master/app/assets/readme-images/logo-colored-background.png)
+# Splitmice
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+<b>Splitmice is THE expense-sharing app for lovers of mice and other cute, pint-sized rodents.</b>
+[Check it out.](https://github.com/kjuubot/splitmice)
 
-Things you may want to cover:
+## What is it?
+Splitmice is the easiest way to track shared expenses across friends, travel buddies, roommates, and other groups of people that you split costs with. It takes care of all the calculations for you and makes keeping tabs on expenses and reimbursements simple.
 
-* Ruby version
+## How to Use
+Using Splitmice is as easy as 1-2-3:
+1. **Add a friend!** You can easily look up friends by their username.
 
-* System dependencies
+![alt text](https://github.com/kjuubot/splitmice/blob/master/app/assets/readme-images/add-friend.png)
 
-* Configuration
+2. **Create an expense.** The amount will automatically be split evenly among everyone involved.
 
-* Database creation
+![alt text](https://github.com/kjuubot/splitmice/blob/master/app/assets/readme-images/create-an-expense.png)
 
-* Database initialization
+3. **Settle up.** Easily record payments to update your balance.
 
-* How to run the test suite
+![alt text](https://github.com/kjuubot/splitmice/blob/master/app/assets/readme-images/settle-up.png)
 
-* Services (job queues, cache servers, search engines, etc.)
+**BONUS:** Scrap the spreadsheet you were using to track group expenses. Splitmice has you covered!
 
-* Deployment instructions
+## Tech
 
-* ...
+* Frontend: React/Redux
+* Backend: Ruby on Rails
+* Database: PostgreSQL
